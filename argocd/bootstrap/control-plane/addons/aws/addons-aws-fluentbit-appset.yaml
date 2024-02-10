@@ -63,13 +63,14 @@ spec:
                 logGroupTemplate: {{metadata.annotations.aws_for_fluentbit_log_group_name}}/workload/$kubernetes['namespace_name']
                 logStreamTemplate: $kubernetes['pod_name'].$kubernetes['container_name']
                 logRetentionDays: 30
-              additionalFilters: |
-                [FILTER]
-                  name: modify
-                  match: kube.*
-                  rule: remove_wildcard *
-                  rule: keep_key log
-                  rule: keep_key kubernetes['pod_name']
+              filter:
+                extraFilters: |
+                  [FILTER]
+                    Name   modify
+                    Match  kube.*
+                    Rule   remove_wildcard *
+                    Rule   keep_key log
+                    Rule   keep_key kubernetes['pod_name']
               serviceAccount:
                 name: {{metadata.annotations.aws_for_fluentbit_service_account}}
                 annotations:
