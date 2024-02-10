@@ -2,4 +2,4 @@ additionalFilters: |
   [FILTER]
       Name  record_modifier
       Match *
-      Remove_key kubernetes["annotations"]
+      Remove_key kubernetes.annotations
