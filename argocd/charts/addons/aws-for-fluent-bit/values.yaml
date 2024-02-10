@@ -1,1 +1,7 @@
 # Helm chart values
+filter:
+  extraFilters: |
+    [FILTER]
+      Name   modify
+      Match  kube.*
+      Remove kubernetes
