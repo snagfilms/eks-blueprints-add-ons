@@ -2,4 +2,4 @@ additionalFilters: |
   [FILTER]
       Name  record_modifier
       Match *
-      Allowlist_key log
+      Remove_key kubernetes["annotations"]
