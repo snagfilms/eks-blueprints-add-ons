@@ -1,5 +1,5 @@
 additionalFilters: |
   [FILTER]
-      Name   modify
-      Match  kube.*
-      Remove kubernetes
+      Name  record_modifier
+      Match *
+      Allowlist_key log
