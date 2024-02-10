@@ -1,1 +1,3 @@
 # Helm chart values
+cloudWatchLogs:
+  logRetentionDays: 30
