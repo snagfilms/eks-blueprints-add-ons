@@ -2,12 +2,13 @@ filter:
   enabled: true
   match: "kube.*"
   kubeURL: "https://kubernetes.default.svc.cluster.local:443"
-  mergeLog: "off"
+  mergeLog: "on"
   mergeLogKey: "data"
-  keepLog: "off"
-  k8sLoggingParser: "off"
-  k8sLoggingExclude: "off"
+  keepLog: "on"
+  k8sLoggingParser: "on"
+  k8sLoggingExclude: "on"
   bufferSize: "32k"
+  annotations: "off"
 # additionalFilters: |
 #   [FILTER]
 #       Name stdout
