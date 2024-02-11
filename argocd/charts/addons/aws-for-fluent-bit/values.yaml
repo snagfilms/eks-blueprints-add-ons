@@ -1,5 +1,7 @@
-# additionalFilters: |
-#   [FILTER]
-#       Name  record_modifier
-#       Match *
-#       Remove_key kubernetes
+additionalFilters: |
+  [FILTER]
+      Name            nest
+      Match           kube.*
+      Operation       lift
+      Nested_under    kubernetes
+      Add_prefix      kubernetes.
