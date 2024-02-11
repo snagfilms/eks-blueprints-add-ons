@@ -20,7 +20,7 @@ volumes:
       path: /var/lib/docker/containers
   - name: lua-script
     configMap:
-    name: fluent-bit-lua-script
+      name: fluent-bit-lua-script
 
 volumeMounts:
   - name: varlog
