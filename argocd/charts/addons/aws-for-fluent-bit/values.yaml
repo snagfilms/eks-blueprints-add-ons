@@ -2,7 +2,7 @@ filter:
   enabled: true
   match: "kube.*"
   kubeURL: "https://kubernetes.default.svc.cluster.local:443"
-  mergeLog: "on"
+  mergeLog: "off"
   mergeLogKey: "data"
   keepLog: "on"
   k8sLoggingParser: "on"
