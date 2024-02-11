@@ -11,6 +11,7 @@ filter:
 filter:
   extraFilters: |
     Annotations     off
+    
 volumes:
   - name: varlog
     hostPath:
@@ -38,10 +39,12 @@ volumeMounts:
 # volumeMounts:
 # - name: lua-script
 #   mountPath: /fluent-bit/etc/scripts 
-# additionalFilters: |
-#   [FILTER]
-#       Name stdout
-#       Match *
+additionalFilters: |
+  [FILTER]
+      Name                lua
+      Match               kube.*
+      Script              /fluent-bit/etc/scripts/filter.lua
+      Call                filter_record
 # # # [FILTER]
 # # #     Name            nest
 # # #     Match           kube.*
