@@ -4,9 +4,9 @@ filter:
   kubeURL: "https://kubernetes.default.svc.cluster.local:443"
   mergeLog: "off"
   mergeLogKey: "data"
-  keepLog: "On"
-  k8sLoggingParser: "On"
-  k8sLoggingExclude: "On"
+  keepLog: "off"
+  k8sLoggingParser: "off"
+  k8sLoggingExclude: "off"
   bufferSize: "32k"
 # additionalFilters: |
 #   [FILTER]
