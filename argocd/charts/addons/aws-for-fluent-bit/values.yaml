@@ -1,3 +1,12 @@
+enabled: true
+  match: "kube.*"
+  kubeURL: "https://kubernetes.default.svc.cluster.local:443"
+  mergeLog: "off"
+  mergeLogKey: "data"
+  keepLog: "On"
+  k8sLoggingParser: "On"
+  k8sLoggingExclude: "On"
+  bufferSize: "32k"
 # additionalFilters: |
 #   [FILTER]
 #       Name stdout
