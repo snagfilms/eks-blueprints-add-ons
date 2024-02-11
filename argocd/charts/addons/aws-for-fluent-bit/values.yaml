@@ -8,7 +8,9 @@ filter:
   k8sLoggingParser: "on"
   k8sLoggingExclude: "on"
   bufferSize: "32k"
-  Annotations: "off"
+filter:
+  extraFilters: |
+    Annotations: "off"
 # additionalFilters: |
 #   [FILTER]
 #       Name stdout
