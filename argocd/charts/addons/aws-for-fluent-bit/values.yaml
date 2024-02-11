@@ -1,17 +1,3 @@
-filter:
-  enabled: true
-  match: "kube.*"
-  kubeURL: "https://kubernetes.default.svc.cluster.local:443"
-  mergeLog: "on"
-  mergeLogKey: "data"
-  keepLog: "on"
-  k8sLoggingParser: "on"
-  k8sLoggingExclude: "on"
-  bufferSize: "32k"
-# filter:
-#   extraFilters: |
-#     Annotations     off
-    
 volumes:
   - name: varlog
     hostPath:
@@ -31,23 +17,10 @@ volumeMounts:
     readOnly: true
   - name: lua-script
     mountPath: /fluent-bit/etc/scripts 
-# volumes:
-# - name: lua-script
-#   configMap:
-#     name: fluent-bit-lua-script
 
-# volumeMounts:
-# - name: lua-script
-#   mountPath: /fluent-bit/etc/scripts 
 additionalFilters: |
   [FILTER]
       Name    lua
       Match   *
       Script  /fluent-bit/etc/scripts/filter.lua
       Call    filter_record
-# # # [FILTER]
-# # #     Name            nest
-# # #     Match           kube.*
-# # #     Operation       lift
-# # #     Nested_under    kubernetes
-# # #     Add_prefix      kubernetes.
