@@ -11,14 +11,14 @@ filter:
 filter:
   extraFilters: |
     Annotations     off
-volumes:
-- name: lua-script
-  configMap:
-    name: fluent-bit-lua-script
+# volumes:
+# - name: lua-script
+#   configMap:
+#     name: fluent-bit-lua-script
 
-volumeMounts:
-- name: lua-script
-  mountPath: /fluent-bit/etc/scripts 
+# volumeMounts:
+# - name: lua-script
+#   mountPath: /fluent-bit/etc/scripts 
 # additionalFilters: |
 #   [FILTER]
 #       Name stdout
