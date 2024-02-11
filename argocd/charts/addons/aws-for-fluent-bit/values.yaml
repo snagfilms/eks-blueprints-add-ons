@@ -1,10 +1,10 @@
-additionalFilters: |
-  [FILTER]
-      Name stdout
-      Match *
-# # [FILTER]
-# #     Name            nest
-# #     Match           kube.*
-# #     Operation       lift
-# #     Nested_under    kubernetes
-# #     Add_prefix      kubernetes.
+# additionalFilters: |
+#   [FILTER]
+#       Name stdout
+#       Match *
+# # # [FILTER]
+# # #     Name            nest
+# # #     Match           kube.*
+# # #     Operation       lift
+# # #     Nested_under    kubernetes
+# # #     Add_prefix      kubernetes.
