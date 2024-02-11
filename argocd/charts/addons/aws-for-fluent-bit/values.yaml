@@ -1,7 +1,7 @@
-# additionalFilters: |
-#   [FILTER]
-#       Name stdout
-#       Match kube.*
+additionalFilters: |
+  [FILTER]
+      Name stdout
+      Match *
 # # [FILTER]
 # #     Name            nest
 # #     Match           kube.*
