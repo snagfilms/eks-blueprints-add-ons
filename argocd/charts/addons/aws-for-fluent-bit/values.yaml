@@ -8,9 +8,9 @@ filter:
   k8sLoggingParser: "on"
   k8sLoggingExclude: "on"
   bufferSize: "32k"
-filter:
-  extraFilters: |
-    Annotations     off
+# filter:
+#   extraFilters: |
+#     Annotations     off
     
 volumes:
   - name: varlog
@@ -41,10 +41,10 @@ volumeMounts:
 #   mountPath: /fluent-bit/etc/scripts 
 additionalFilters: |
   [FILTER]
-      Name                lua
-      Match               kube.*
-      Script              /fluent-bit/etc/scripts/filter.lua
-      Call                filter_record
+      Name    lua
+      Match   kube.*
+      Script  /fluent-bit/etc/scripts/filter.lua
+      Call    filter_record
 # # # [FILTER]
 # # #     Name            nest
 # # #     Match           kube.*
