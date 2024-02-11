@@ -1,5 +1,8 @@
 additionalFilters: |
   [FILTER]
+      Name stdout
+      Match kube.*
+  [FILTER]
       Name            nest
       Match           kube.*
       Operation       lift
