@@ -1,4 +1,5 @@
-enabled: true
+filter:
+  enabled: true
   match: "kube.*"
   kubeURL: "https://kubernetes.default.svc.cluster.local:443"
   mergeLog: "off"
