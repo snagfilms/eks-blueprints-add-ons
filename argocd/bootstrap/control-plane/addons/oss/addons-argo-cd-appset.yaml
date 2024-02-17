@@ -30,7 +30,7 @@ spec:
                 matchLabels:
                   environment: staging
               values:
-                addonChartVersion: 6.0.0
+                addonChartVersion: 5.45.0
           - clusters:
               selector:
                 matchLabels:
