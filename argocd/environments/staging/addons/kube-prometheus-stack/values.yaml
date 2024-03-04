@@ -43,11 +43,11 @@ prometheus:
       additionalLabels:
         monitor: "istio-mesh"
       jobLabel: "envoy-stats"
-      selector:
-        matchExpressions:
-          - key: "prometheus.io/scrape"
-            operator: "In"
-            values: ["true"]
+      # selector:
+      #   matchExpressions:
+      #     - key: "prometheus.io/scrape"
+      #       operator: "In"
+      #       values: ["true"]
       namespaceSelector:
         matchNames:
           - "bff"
@@ -66,19 +66,19 @@ prometheus:
           - "monetization"
           - "scheduler"
           - "management-v1"
-      # targetLabels:
-      #   - "app"
-      # podTargetLabels:
-      #   - "app"
+      targetLabels:
+        - "app"
+      podTargetLabels:
+        - "app"
       endpoints:
         - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
           path: "/stats/prometheus"
           scheme: "http"
-          relabelings:
-            - sourceLabels: [__meta_kubernetes_namespace]
-              targetLabel: namespace
-            - sourceLabels: [__meta_kubernetes_pod_name]
-              targetLabel: pod_name
-            - action: labelmap
-              regex: __meta_kubernetes_pod_label_(.+)
+          # relabelings:
+          #   - sourceLabels: [__meta_kubernetes_namespace]
+          #     targetLabel: namespace
+          #   - sourceLabels: [__meta_kubernetes_pod_name]
+          #     targetLabel: pod_name
+          #   - action: labelmap
+          #     regex: __meta_kubernetes_pod_label_(.+)
