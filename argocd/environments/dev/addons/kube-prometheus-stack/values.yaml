@@ -15,3 +15,27 @@ prometheus:
           resources:
             requests:
               storage: 5Gi
+  additionalServiceMonitors:
+    - name: "istiod"
+      additionalLabels:
+        monitor: "istio-control-plane"
+      jobLabel: "istio"
+      selector:
+        matchLabels:
+          app: "istiod"
+      namespaceSelector:
+        matchNames:
+          - "istio-system"
+      endpoints:
+      - port: "http-monitoring"  # Make sure this is the port exposed by your Istio services for monitoring.
+        interval: "15s"
+        path: "/metrics"  # Update if Istio exposes metrics on a different path.
+        scheme: "http"
+        tlsConfig:
+          insecureSkipVerify: true
+      targetLabels:
+        - "app"
+        - "release"
+      podTargetLabels:
+        - "app"
+        - "release"
