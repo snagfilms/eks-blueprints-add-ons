@@ -39,3 +39,33 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
+    - name: "istio-workload-metrics"
+      additionalLabels:
+        monitor: "istio-mesh"
+      jobLabel: "envoy-stats"
+      selector:
+        matchExpressions:
+          - key: "security.istio.io/tlsMode"
+            operator: "Exists"
+          - key: "prometheus.io/scrape"
+            operator: "In"
+            values: ["true"]
+      namespaceSelector:
+        matchLabels:
+          istio-injection: "enabled"
+      targetLabels:
+        - "app"
+      podTargetLabels:
+        - "app"
+      endpoints:
+        - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
+          interval: "15s"
+          path: "/stats/prometheus"
+          scheme: "http"
+          # relabelings:
+          #   - sourceLabels: [__meta_kubernetes_namespace]
+          #     targetLabel: namespace
+          #   - sourceLabels: [__meta_kubernetes_pod_name]
+          #     targetLabel: pod_name
+          #   - action: labelmap
+          #     regex: __meta_kubernetes_pod_label_(.+)
