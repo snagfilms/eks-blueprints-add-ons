@@ -43,7 +43,7 @@ prometheus:
       additionalLabels:
         monitor: "istio-mesh"
       jobLabel: "envoy-stats"
-      # selector:
+      selector: {}
       #   matchExpressions:
       #     - key: "prometheus.io/scrape"
       #       operator: "In"
