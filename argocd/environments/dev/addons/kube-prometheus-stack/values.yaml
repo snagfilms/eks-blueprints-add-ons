@@ -51,7 +51,23 @@ prometheus:
             operator: "In"
             values: ["true"]
       namespaceSelector:
-        any: true
+        matchNames:
+          - "bff"
+          - "content"
+          - "notification"
+          - "frontend"
+          - "user"
+          - "site"
+          - "common"
+          - "admin"
+          - "analytics"
+          - "entitlement"
+          - "identity"
+          - "management"
+          - "media"
+          - "monetization"
+          - "scheduler"
+          - "management-v1"
       targetLabels:
         - "app"
       podTargetLabels:
