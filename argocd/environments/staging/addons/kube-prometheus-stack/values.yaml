@@ -73,7 +73,7 @@ prometheus:
       podTargetLabels:
         - "app"
       endpoints:
-        - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
+        - port: "15021"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
           path: "/stats/prometheus"
           scheme: "http"
