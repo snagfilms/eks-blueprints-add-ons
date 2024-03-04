@@ -51,8 +51,7 @@ prometheus:
             operator: "In"
             values: ["true"]
       namespaceSelector:
-        matchLabels:
-          istio-injection: "enabled"
+        any: true
       targetLabels:
         - "app"
       podTargetLabels:
