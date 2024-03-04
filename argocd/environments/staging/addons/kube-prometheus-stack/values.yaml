@@ -66,10 +66,10 @@ prometheus:
           - "monetization"
           - "scheduler"
           - "management-v1"
-      targetLabels:
-        - "app"
-      podTargetLabels:
-        - "app"
+      # targetLabels:
+      #   - "app"
+      # podTargetLabels:
+      #   - "app"
       endpoints:
         - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
