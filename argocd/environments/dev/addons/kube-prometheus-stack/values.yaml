@@ -5,11 +5,12 @@ grafana:
     size: 10Gi
     inMemory:
       enabled: false
- storageSpec:
-  volumeClaimTemplate:
-    spec:
-      storageClassName: gp2
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 10Gi
+prometheusSpec:
+  storageSpec:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: gp2
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi
