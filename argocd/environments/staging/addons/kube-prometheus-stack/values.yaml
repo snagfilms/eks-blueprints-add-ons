@@ -8,10 +8,10 @@ grafana:
 prometheus:
   resources:
     requests:
-      memory: "2Gi"  # Start with half of your observed usage
+      memory: "2Gi"
       cpu: "100m"
     limits:
-      memory: "3Gi"  # Set a limit that's above your observed usage
+      memory: "3Gi"  
       cpu: "200m"
   prometheusSpec:
     storageSpec:
