@@ -84,8 +84,8 @@ prometheus:
         matchNames:
           - "istio-ingress"
       endpoints:
-      - port: "15020" 
+      - targetPort: "http-envoy-prom" 
         path: "/stats/prometheus"
-        scheme: "http"
-        tlsConfig:
-          insecureSkipVerify: true
+        # scheme: "http"
+        # tlsConfig:
+        #   insecureSkipVerify: true
