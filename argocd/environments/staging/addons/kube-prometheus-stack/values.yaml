@@ -44,11 +44,10 @@ prometheus:
       additionalLabels:
         monitor: "istio-mesh"
       jobLabel: "envoy-stats"
-      selector: {}
-      #   matchExpressions:
-      #     - key: "prometheus.io/scrape"
-      #       operator: "In"
-      #       values: ["true"]
+      selector:
+        matchExpressions:
+            - key: "security.istio.io/tlsMode"
+              operator: "Exists"
       namespaceSelector:
         matchNames:
           - "bff"
@@ -71,7 +70,7 @@ prometheus:
       #   - "app"
       # podTargetLabels:
       #   - "app"
-      endpoints:
+      podMetricsEndpoints:
         - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
           path: "/stats/prometheus"
