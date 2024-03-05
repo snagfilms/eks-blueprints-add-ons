@@ -51,7 +51,7 @@ prometheus:
           interval: "15s"
           path: "/stats/prometheus"
           scheme: "http"
-          PodMetricsEndpointTLSConfig:
+          tlsConfig:
             insecureSkipVerify: true
   additionalServiceMonitors:
     - name: "istiod"
