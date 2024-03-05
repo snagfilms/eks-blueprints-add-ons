@@ -56,34 +56,22 @@ prometheus:
         scheme: "http"
 
   additionalPodMonitors:
-    - name: "istio-workload-metrics"
-      additionalLabels:
-        monitor: "istio-mesh"
-      jobLabel: "envoy-stats"
-      selector:
-        matchExpressions:
-            - key: "security.istio.io/tlsMode"
-              operator: "Exists"
-      namespaceSelector:
-        matchNames:
-          - "bff"
-          - "content"
-          - "notification"
-          - "frontend"
-          - "user"
-          - "site"
-          - "common"
-          - "admin"
-          - "analytics"
-          - "entitlement"
-          - "identity"
-          - "management"
-          - "media"
-          - "monetization"
-          - "scheduler"
-          - "management-v1"
-      podMetricsEndpoints:
-        - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
-          interval: "15s"
-          path: "/stats/prometheus"
-          scheme: "http"
+  - name: "istio-workload-metrics"
+    additionalLabels:
+      monitor: "istio-mesh"
+    jobLabel: "envoy-stats"
+    selector:
+      matchLabels:
+        # Your Istio-injected pods should have specific labels, adjust as necessary
+        security.istio.io/tlsMode: "istio"
+    namespaceSelector:
+      matchNames:
+        - "bff"
+        - "content"
+        - "notification"
+        # Add all other namespaces where your Istio-injected pods reside
+    podMetricsEndpoints:
+      - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio sidecars.
+        interval: "15s"
+        path: "/stats/prometheus"
+        scheme: "http"
