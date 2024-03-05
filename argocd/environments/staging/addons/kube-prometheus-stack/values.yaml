@@ -6,14 +6,15 @@ grafana:
     inMemory:
       enabled: false
 prometheus:
-  resources:
-    requests:
-      memory: "2Gi"
-      cpu: "100m"
-    limits:
-      memory: "3Gi"  
-      cpu: "200m"
+  
   prometheusSpec:
+    resources:
+      requests:
+        memory: "2Gi"
+        cpu: "100m"
+      limits:
+        memory: "3Gi"  
+        cpu: "200m"
     storageSpec:
       volumeClaimTemplate:
         spec:
