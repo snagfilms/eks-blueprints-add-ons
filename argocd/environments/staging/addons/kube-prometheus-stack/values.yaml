@@ -39,6 +39,7 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
+  additionalPodMonitors:
     - name: "istio-workload-metrics"
       additionalLabels:
         monitor: "istio-mesh"
