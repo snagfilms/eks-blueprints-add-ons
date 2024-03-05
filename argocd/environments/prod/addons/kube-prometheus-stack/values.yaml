@@ -5,8 +5,22 @@ grafana:
     size: 5Gi
     inMemory:
       enabled: false
+  resources:
+    requests:
+      memory: "350Mi"
+      cpu: "100m"
+    limits:
+      memory: "500Mi"  
+      cpu: "200m"
 prometheus:
   prometheusSpec:
+    resources:
+      requests:
+        memory: "2Gi"
+        cpu: "100m"
+      limits:
+        memory: "3Gi"  
+        cpu: "200m"
     storageSpec:
       volumeClaimTemplate:
         spec:

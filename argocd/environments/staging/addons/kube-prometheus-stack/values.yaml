@@ -13,7 +13,6 @@ grafana:
       memory: "500Mi"  
       cpu: "200m"
 prometheus:
-  
   prometheusSpec:
     resources:
       requests:
