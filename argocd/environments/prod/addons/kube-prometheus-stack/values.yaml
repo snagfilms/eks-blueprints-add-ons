@@ -14,38 +14,38 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 5Gi
+              storage: 50Gi
   additionalPodMonitors:
-  - name: "istio-workload-metrics"
-    additionalLabels:
-      monitor: "istio-mesh"
-    jobLabel: "envoy-stats"
-    selector:
-      matchExpressions:
-          - key: "security.istio.io/tlsMode"
-            operator: "Exists"
-    namespaceSelector:
-      matchNames:
-        - "bff"
-        - "content"
-        - "notification"
-        - "frontend"
-        - "user"
-        - "site"
-        - "common"
-        - "admin"
-        - "analytics"
-        - "entitlement"
-        - "identity"
-        - "management"
-        - "media"
-        - "monetization"
-        - "scheduler"
-        - "management-v1"
-    podMetricsEndpoints:
-      - port: "http-envoy-prom"
-        path: "/stats/prometheus"
-        scheme: "http"
+    - name: "istio-workload-metrics"
+      additionalLabels:
+        monitor: "istio-mesh"
+      jobLabel: "envoy-stats"
+      selector:
+        matchExpressions:
+            - key: "security.istio.io/tlsMode"
+              operator: "Exists"
+      namespaceSelector:
+        matchNames:
+          - "bff"
+          - "content"
+          - "notification"
+          - "frontend"
+          - "user"
+          - "site"
+          - "common"
+          - "admin"
+          - "analytics"
+          - "entitlement"
+          - "identity"
+          - "management"
+          - "media"
+          - "monetization"
+          - "scheduler"
+          - "management-v1"
+      podMetricsEndpoints:
+        - port: "http-envoy-prom"
+          path: "/stats/prometheus"
+          scheme: "http"
   additionalServiceMonitors:
     - name: "istiod"
       additionalLabels:
