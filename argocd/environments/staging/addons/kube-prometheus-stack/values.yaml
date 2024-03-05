@@ -6,6 +6,13 @@ grafana:
     inMemory:
       enabled: false
 prometheus:
+  resources:
+    requests:
+      memory: "2Gi"  # Start with half of your observed usage
+      cpu: "100m"
+    limits:
+      memory: "3Gi"  # Set a limit that's above your observed usage
+      cpu: "200m"
   prometheusSpec:
     storageSpec:
       volumeClaimTemplate:
