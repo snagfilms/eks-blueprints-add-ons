@@ -39,6 +39,7 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
+
     - name: "istio-ingressgateway"
       jobLabel: "istio-ingressgateway"
       selector:
@@ -48,10 +49,11 @@ prometheus:
         matchNames:
           - "istio-ingress"
       endpoints:
-      - port: "http-envoy-prom"  # Make sure this is the port exposed by your Istio services for monitoring.
+      - port: "15020"  # Make sure this is the port exposed by your Istio services for monitoring.
         path: "/stats/prometheus"  # Update if Istio exposes metrics on a different path.
         tlsConfig:
           insecureSkipVerify: true
+        scheme: "http"
 
   additionalPodMonitors:
     - name: "istio-workload-metrics"
