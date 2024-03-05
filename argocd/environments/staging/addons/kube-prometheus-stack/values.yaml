@@ -72,16 +72,17 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
+        
     - name: "istio-ingressgateway"
       additionalLabels:
         monitor: "istio-ingress"
       jobLabel: "istio-ingress"
       selector:
         matchLabels:
-          app: "istio-ingressgateway"  # This label should match your Istio Ingress Gateway's label
+          app: "istio-ingress"  # This label should match your Istio Ingress Gateway's label
       namespaceSelector:
         matchNames:
-          - "istio-system"  # Assuming your Ingress Gateway is also in the istio-system namespace
+          - "istio-ingress"  # Assuming your Ingress Gateway is also in the istio-system namespace
       endpoints:
       - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio Ingress Gateway services for monitoring.
         path: "/stats/prometheus"  # Default metrics path, update if your setup is different.
