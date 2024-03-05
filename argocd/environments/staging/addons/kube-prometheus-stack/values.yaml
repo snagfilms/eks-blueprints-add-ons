@@ -7,19 +7,19 @@ grafana:
       enabled: false
   resources:
     requests:
-      memory: "350Mi"
+      memory: "500Mi"
       cpu: "100m"
     limits:
-      memory: "500Mi"  
+      memory: "1Gi"  
       cpu: "200m"
 prometheus:
   prometheusSpec:
     resources:
       requests:
-        memory: "2Gi"
+        memory: "2.5Gi"
         cpu: "100m"
       limits:
-        memory: "3Gi"  
+        memory: "5Gi"  
         cpu: "200m"
     storageSpec:
       volumeClaimTemplate:
