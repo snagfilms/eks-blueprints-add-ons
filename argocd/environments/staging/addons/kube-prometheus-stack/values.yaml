@@ -77,9 +77,9 @@ prometheus:
       additionalLabels:
         monitor: "istio-ingress"
       jobLabel: "istio-ingress"
-      selector:
-        matchLabels:
-          app: "istio-ingress"  # This label should match your Istio Ingress Gateway's label
+      selector: {}
+        # matchLabels:
+        #   app: "istio-ingress"  # This label should match your Istio Ingress Gateway's label
       namespaceSelector:
         matchNames:
           - "istio-ingress"  # Assuming your Ingress Gateway is also in the istio-system namespace
