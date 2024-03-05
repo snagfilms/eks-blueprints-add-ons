@@ -39,6 +39,7 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
+
   additionalPodMonitors:
     - name: "istio-workload-metrics"
       additionalLabels:
@@ -71,14 +72,7 @@ prometheus:
       # podTargetLabels:
       #   - "app"
       podMetricsEndpoints:
-        - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio sidecars.
+        - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
           path: "/stats/prometheus"
           scheme: "http"
-          # relabelings:
-          #   - sourceLabels: [__meta_kubernetes_namespace]
-          #     targetLabel: namespace
-          #   - sourceLabels: [__meta_kubernetes_pod_name]
-          #     targetLabel: pod_name
-          #   - action: labelmap
-          #     regex: __meta_kubernetes_pod_label_(.+)
