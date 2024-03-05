@@ -20,10 +20,10 @@ prometheus:
       additionalLabels:
         monitor: "istio-mesh"
       jobLabel: "envoy-stats"
-      selector:
-        matchExpressions:
-            - key: "security.istio.io/tlsMode"
-              operator: "Exists"
+      selector: {}
+        # matchExpressions:
+        #     - key: "security.istio.io/tlsMode"
+        #       operator: "Exists"
       namespaceSelector:
         matchNames:
           - "bff"
@@ -72,7 +72,7 @@ prometheus:
       podTargetLabels:
         - "app"
         - "release"
-        
+
     - name: "istio-ingressgateway"
       additionalLabels:
         monitor: "istio-ingress"
