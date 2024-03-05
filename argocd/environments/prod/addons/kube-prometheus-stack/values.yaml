@@ -2,11 +2,25 @@
 grafana:
   persistence:
     enabled: true
-    size: 10Gi
+    size: 5Gi
     inMemory:
       enabled: false
+  resources:
+    requests:
+      memory: "500Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"  
+      cpu: "200m"
 prometheus:
   prometheusSpec:
+    resources:
+      requests:
+        memory: "4Gi"
+        cpu: "300m"
+      limits:
+        memory: "6Gi"  
+        cpu: "500m"
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -14,38 +28,38 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 5Gi
+              storage: 50Gi
   additionalPodMonitors:
-  - name: "istio-workload-metrics"
-    additionalLabels:
-      monitor: "istio-mesh"
-    jobLabel: "envoy-stats"
-    selector:
-      matchExpressions:
-          - key: "security.istio.io/tlsMode"
-            operator: "Exists"
-    namespaceSelector:
-      matchNames:
-        - "bff"
-        - "content"
-        - "notification"
-        - "frontend"
-        - "user"
-        - "site"
-        - "common"
-        - "admin"
-        - "analytics"
-        - "entitlement"
-        - "identity"
-        - "management"
-        - "media"
-        - "monetization"
-        - "scheduler"
-        - "management-v1"
-    podMetricsEndpoints:
-      - port: "http-envoy-prom"
-        path: "/stats/prometheus"
-        scheme: "http"
+    - name: "istio-workload-metrics"
+      additionalLabels:
+        monitor: "istio-mesh"
+      jobLabel: "envoy-stats"
+      selector:
+        matchExpressions:
+            - key: "security.istio.io/tlsMode"
+              operator: "Exists"
+      namespaceSelector:
+        matchNames:
+          - "bff"
+          - "content"
+          - "notification"
+          - "frontend"
+          - "user"
+          - "site"
+          - "common"
+          - "admin"
+          - "analytics"
+          - "entitlement"
+          - "identity"
+          - "management"
+          - "media"
+          - "monetization"
+          - "scheduler"
+          - "management-v1"
+      podMetricsEndpoints:
+        - port: "http-envoy-prom"
+          path: "/stats/prometheus"
+          scheme: "http"
   additionalServiceMonitors:
     - name: "istiod"
       additionalLabels:
