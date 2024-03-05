@@ -20,10 +20,10 @@ prometheus:
       additionalLabels:
         monitor: "istio-mesh"
       jobLabel: "envoy-stats"
-      selector: {}
-        # matchExpressions:
-        #     - key: "security.istio.io/tlsMode"
-        #       operator: "Exists"
+      selector:
+        matchExpressions:
+            - key: "security.istio.io/tlsMode"
+              operator: "Exists"
       namespaceSelector:
         matchNames:
           - "bff"
@@ -46,8 +46,6 @@ prometheus:
         - port: "http-envoy-prom"
           path: "/stats/prometheus"
           scheme: "http"
-          tlsConfig:
-            insecureSkipVerify: true
   additionalServiceMonitors:
     - name: "istiod"
       additionalLabels:
@@ -64,8 +62,6 @@ prometheus:
         interval: "15s"
         path: "/metrics"
         scheme: "http"
-        tlsConfig:
-          insecureSkipVerify: true
       targetLabels:
         - "app"
         - "release"
@@ -86,6 +82,3 @@ prometheus:
       endpoints:
       - targetPort: "http-envoy-prom" 
         path: "/stats/prometheus"
-        # scheme: "http"
-        # tlsConfig:
-        #   insecureSkipVerify: true
