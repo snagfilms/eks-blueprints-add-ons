@@ -73,19 +73,19 @@ prometheus:
         - "app"
         - "release"
 
-    - name: "istio-ingressgateway"
-      additionalLabels:
-        monitor: "istio-ingress"
-      jobLabel: "istio-ingress"
-      selector: {}
-        # matchLabels:
-        #   app: "istio-ingress"  # This label should match your Istio Ingress Gateway's label
-      namespaceSelector:
-        matchNames:
-          - "istio-ingress"  # Assuming your Ingress Gateway is also in the istio-system namespace
-      endpoints:
-      - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio Ingress Gateway services for monitoring.
-        path: "/stats/prometheus"  # Default metrics path, update if your setup is different.
-        scheme: "http"
-        tlsConfig:
-          insecureSkipVerify: true
+    # - name: "istio-ingressgateway"
+    #   additionalLabels:
+    #     monitor: "istio-ingressgateway"
+    #   jobLabel: "istio-ingress"
+    #   selector: {}
+    #     # matchLabels:
+    #     #   app: "istio-ingress"  # This label should match your Istio Ingress Gateway's label
+    #   namespaceSelector:
+    #     matchNames:
+    #       - "istio-ingress"
+    #   endpoints:
+    #   - port: "http-envoy-prom" 
+    #     path: "/stats/prometheus"
+    #     scheme: "http"
+    #     tlsConfig:
+    #       insecureSkipVerify: true
