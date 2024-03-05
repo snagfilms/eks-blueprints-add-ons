@@ -47,7 +47,7 @@ prometheus:
       # podTargetLabels:
       #   - "app"
       podMetricsEndpoints:
-        - port: "15020"  # Ensure this matches the port exposed by your Istio sidecars.
+        - port: "http-envoy-prom"  # Ensure this matches the port exposed by your Istio sidecars.
           interval: "15s"
           path: "/stats/prometheus"
           scheme: "http"
