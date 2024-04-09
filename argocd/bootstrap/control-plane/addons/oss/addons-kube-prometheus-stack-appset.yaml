@@ -36,6 +36,12 @@ spec:
                   environment: prod
               values:
                 addonChartVersion: 50.0.0
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: msn-uat
+              values:
+                addonChartVersion: 50.0.0
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
