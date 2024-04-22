@@ -16,10 +16,10 @@ prometheus:
   prometheusSpec:
     resources:
       requests:
-        memory: "4Gi"
+        memory: "6Gi"
         cpu: "2"
       limits:
-        memory: "7Gi"  
+        memory: "8Gi"  
         cpu: "4"
     scrapeInterval: "60s"
     storageSpec:
