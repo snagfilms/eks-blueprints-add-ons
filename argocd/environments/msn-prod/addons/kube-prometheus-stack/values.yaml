@@ -10,17 +10,17 @@ grafana:
       memory: "500Mi"
       cpu: "100m"
     limits:
-      memory: "1Gi"  
+      memory: "2Gi"  
       cpu: "200m"
 prometheus:
   prometheusSpec:
     resources:
       requests:
-        memory: "4Gi"
-        cpu: "300m"
+        memory: "6Gi"
+        cpu: "2"
       limits:
-        memory: "6Gi"  
-        cpu: "500m"
+        memory: "8Gi"  
+        cpu: "4"
     scrapeInterval: "60s"
     storageSpec:
       volumeClaimTemplate:
