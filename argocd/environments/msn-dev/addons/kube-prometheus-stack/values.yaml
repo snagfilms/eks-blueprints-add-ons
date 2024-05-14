@@ -1,0 +1,84 @@
+# Helm chart values
+grafana:
+  persistence:
+    enabled: true
+    size: 10Gi
+    inMemory:
+      enabled: false
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp2
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+  additionalPodMonitors:
+  - name: "istio-workload-metrics"
+    additionalLabels:
+      monitor: "istio-mesh"
+    jobLabel: "envoy-stats"
+    selector:
+      matchExpressions:
+          - key: "security.istio.io/tlsMode"
+            operator: "Exists"
+    namespaceSelector:
+      matchNames:
+        - "bff"
+        - "content"
+        - "notification"
+        - "frontend"
+        - "user"
+        - "site"
+        - "common"
+        - "admin"
+        - "analytics"
+        - "entitlement"
+        - "identity"
+        - "management"
+        - "media"
+        - "monetization"
+        - "scheduler"
+        - "management-v1"
+    podMetricsEndpoints:
+      - port: "http-envoy-prom"
+        path: "/stats/prometheus"
+        scheme: "http"
+  additionalServiceMonitors:
+    - name: "istiod"
+      additionalLabels:
+        monitor: "istio-control-plane"
+      jobLabel: "istio"
+      selector:
+        matchLabels:
+          app: "istiod"
+      namespaceSelector:
+        matchNames:
+          - "istio-system"
+      endpoints:
+      - port: "http-monitoring"  
+        interval: "15s"
+        path: "/metrics"
+        scheme: "http"
+      targetLabels:
+        - "app"
+        - "release"
+      podTargetLabels:
+        - "app"
+        - "release"
+
+    - name: "istio-ingressgateway"
+      additionalLabels:
+        monitor: "istio-ingressgateway"
+      jobLabel: "istio-ingress"
+      selector:
+        matchLabels:
+          istio: ingressgateway
+      namespaceSelector:
+        matchNames:
+          - "istio-ingress"
+      endpoints:
+      - targetPort: "http-envoy-prom" 
+        path: "/stats/prometheus"
