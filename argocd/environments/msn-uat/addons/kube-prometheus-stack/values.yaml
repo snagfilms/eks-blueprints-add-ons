@@ -75,7 +75,7 @@ prometheus:
           - "istio-system"
       endpoints:
       - port: "http-monitoring"  
-        interval: "60s"
+        interval: "30s"
         path: "/metrics"
         scheme: "http"
       targetLabels:

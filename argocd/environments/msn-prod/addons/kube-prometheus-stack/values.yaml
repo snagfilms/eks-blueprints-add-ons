@@ -61,6 +61,7 @@ prometheus:
         - port: "http-envoy-prom"
           path: "/stats/prometheus"
           scheme: "http"
+          interval: "15s"
   additionalServiceMonitors:
     - name: "istiod"
       additionalLabels:
