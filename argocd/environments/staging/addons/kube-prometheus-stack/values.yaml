@@ -12,6 +12,7 @@ grafana:
     limits:
       memory: "1Gi"  
       cpu: "200m"
+
 prometheus:
   prometheusSpec:
     resources:
@@ -29,6 +30,36 @@ prometheus:
           resources:
             requests:
               storage: 50Gi
+    # Enable Thanos Sidecar
+    thanos:
+      image: "quay.io/thanos/thanos:v0.32.0"  # Specify Thanos version
+      objectStorageConfig:
+        name: thanos-objstore-config
+        key: objstore.yaml
+      listenLocal: true
+    containers:
+      - name: thanos-sidecar
+        image: "quay.io/thanos/thanos:v0.32.0"
+        args:
+          - sidecar
+          - --tsdb.path=/prometheus
+          - --prometheus.url=http://localhost:9090
+          - --objstore.config-file=/etc/thanos/objstore.yaml
+        ports:
+          - containerPort: 10901
+            name: grpc
+          - containerPort: 10902
+            name: http
+        volumeMounts:
+          - name: prometheus-storage
+            mountPath: /prometheus
+          - name: thanos-objstore-config
+            mountPath: /etc/thanos
+    volumes:
+      - name: thanos-objstore-config
+        configMap:
+          name: thanos-objstore-config
+
   additionalPodMonitors:
     - name: "istio-workload-metrics"
       additionalLabels:
