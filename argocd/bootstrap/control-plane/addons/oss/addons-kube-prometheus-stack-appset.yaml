@@ -24,12 +24,9 @@ spec:
                   - key: enable_kube_prometheus_stack
                     operator: In
                     values: ['true']
-          - clusters:
-              selector:
-                matchLabels:
-                  environment: staging
-              values:
-                addonChartVersion: 50.0.0
+                  - key: environment
+                    operator: NotIn
+                    values: [staging]
           - clusters:
               selector:
                 matchLabels:
