@@ -27,12 +27,10 @@ spec:
                   - key: environment
                     operator: NotIn
                     values: [staging]
-          - clusters:
-              selector:
-                matchLabels:
-                  environment: prod
-              values:
-                addonChartVersion: 50.0.0
+                  - key: environment
+                    operator: NotIn
+                    values: [prod]
+
           - clusters:
               selector:
                 matchLabels:
