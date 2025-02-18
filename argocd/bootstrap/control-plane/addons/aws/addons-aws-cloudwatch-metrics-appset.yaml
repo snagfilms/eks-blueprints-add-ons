@@ -23,7 +23,7 @@ spec:
                     values: [in-cluster]
                   - key: enable_aws_cloudwatch_metrics
                     operator: In
-                    values: ['false']
+                    values: ['staging']
           - clusters:
               selector:
                 matchLabels:
