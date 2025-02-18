@@ -24,16 +24,12 @@ spec:
                   - key: enable_aws_cloudwatch_metrics
                     operator: In
                     values: ['false']
-          - clusters:
-              selector:
-                matchLabels:
-                  environment: staging
-              values:
-                addonChartVersion: 0.0.9
-          - clusters:
-              selector:
-                matchLabels:
-                  environment: prod
+                  - key: environment
+                    operator: NotIn
+                    values: [prod]
+                  - key: environment
+                    operator: NotIn
+                    values: [staging]
               values:
                 addonChartVersion: 0.0.9
   template:
