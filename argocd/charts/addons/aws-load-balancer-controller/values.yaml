@@ -1,1 +1,8 @@
+nodeSelector:
+  kubernetes.io/arch: arm64
+  workload: application
+tolerations:
+  - key: workload
+    value: application
+    effect: NoSchedule
 # Helm chart values
