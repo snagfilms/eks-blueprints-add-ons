@@ -1,0 +1,7 @@
+nodeSelector:
+  kubernetes.io/arch: arm64
+  workload: tools
+tolerations:
+  - key: workload
+    value: tools
+    effect: NoSchedule
