@@ -1,4 +1,19 @@
-global:
+nodeSelector:
+  workload: tools
+  kubernetes.io/arch: arm64
+tolerations:
+  - key: workload
+    value: tools
+    effect: NoSchedule
+webhook:
+  nodeSelector:
+    workload: tools
+    kubernetes.io/arch: arm64
+  tolerations:
+    - key: workload
+      value: tools
+      effect: NoSchedule
+certController:
   nodeSelector:
     workload: tools
     kubernetes.io/arch: arm64
