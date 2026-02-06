@@ -5,4 +5,4 @@ global:
   tolerations:
     - key: workload
       value: tools
-      effect: NoSchedule
+      effect: NoSchedule 
