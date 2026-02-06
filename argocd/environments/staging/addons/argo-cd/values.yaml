@@ -5,17 +5,4 @@ global:
   tolerations:
     - key: workload
       value: tools
-      effect: NoSchedule
-
-additionalFilters: |
-  [FILTER]
-      Name    lua
-      Match   *
-      Script  /fluent-bit/etc/scripts/filter.lua
-      Call    filter_record
-  [FILTER]
-      Name    grep
-      Match   *
-      Exclude log /v3/analytics
-      Exclude log /graphql
-      Exclude log /bff      
+      effect: NoSchedule 
