@@ -17,6 +17,6 @@ configs:
   params:
     create: true
     application.instanceLabelKey: argocd.argoproj.io/staging-instance
-
-data:
-  scopes: '[groups, email]'
+  
+  rbac:
+    scopes: "[groups, email]"
