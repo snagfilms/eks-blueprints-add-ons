@@ -15,8 +15,8 @@ global:
 
 configs:
   params:
-    - name: "application.instanceLabelKey"
-      value: "argocd.argoproj.io/staging-instance"
-   
+    create: true
+    application.instanceLabelKey: argocd.argoproj.io/staging-instance
+
 data:
-  scopes: '[groups, email]'   
+  scopes: '[groups, email]'
