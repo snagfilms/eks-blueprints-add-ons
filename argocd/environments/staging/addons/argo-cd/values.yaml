@@ -18,3 +18,5 @@ configs:
     - name: "application.instanceLabelKey"
       value: "argocd.argoproj.io/staging-instance"
    
+data:
+  scopes: '[groups, email]'   
