@@ -6,3 +6,16 @@ global:
     - key: workload
       value: tools
       effect: NoSchedule 
+
+# values-argocd.yaml (staging)
+configs:
+  cm:
+    application:
+      instanceLabelKey: argocd.argoproj.io/staging-instance 
+
+# # OR as params array (if cm doesn't work)
+# configs:
+#   params:
+#     - name: "application.instanceLabelKey"
+#       value: "argocd.argoproj.io/staging-instance"
+   
