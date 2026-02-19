@@ -6,3 +6,6 @@ global:
     - key: workload
       value: tools
       effect: NoSchedule 
+
+data:
+  scopes: '[groups, email]'
