@@ -6,3 +6,7 @@ global:
     - key: workload
       value: application
       effect: NoSchedule
+
+configs:
+  rbac:
+    scopes: "[groups, email]"

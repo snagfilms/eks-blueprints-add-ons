@@ -5,4 +5,18 @@ global:
   tolerations:
     - key: workload
       value: tools
-      effect: NoSchedule
+      effect: NoSchedule 
+
+# values-argocd.yaml (staging)
+# configs:
+#   cm:
+#     application:
+#       instanceLabelKey: argocd.argoproj.io/staging-instance 
+
+configs:
+  params:
+    create: true
+    application.instanceLabelKey: argocd.argoproj.io/staging-instance
+  
+  rbac:
+    scopes: "[groups, email]"
