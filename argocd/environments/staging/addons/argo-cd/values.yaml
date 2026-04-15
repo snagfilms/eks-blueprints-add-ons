@@ -1,10 +1,10 @@
 global:
   nodeSelector:
-    workload: tools
+    workload: application
     kubernetes.io/arch: arm64
   tolerations:
     - key: workload
-      value: tools
+      value: application
       effect: NoSchedule 
 
 # values-argocd.yaml (staging)
