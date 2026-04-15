@@ -1,23 +1,23 @@
 nodeSelector:
-  workload: tools
+  workload: application
   kubernetes.io/arch: arm64
 tolerations:
   - key: workload
-    value: tools
+    value: application
     effect: NoSchedule
 webhook:
   nodeSelector:
-    workload: tools
+    workload: application
     kubernetes.io/arch: arm64
   tolerations:
     - key: workload
-      value: tools
+      value: application
       effect: NoSchedule
 certController:
   nodeSelector:
-    workload: tools
+    workload: application
     kubernetes.io/arch: arm64
   tolerations:
     - key: workload
-      value: tools
+      value: application
       effect: NoSchedule
