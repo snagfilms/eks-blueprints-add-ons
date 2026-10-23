@@ -30,7 +30,7 @@ spec:
                 matchLabels:
                   environment: staging
               values:
-                addonChartVersion: 5.45.0
+                addonChartVersion: 9.4.4  # ArgoCD v3.3.2 (same as argocd-dev on this cluster)
           - clusters:
               selector:
                 matchLabels:
