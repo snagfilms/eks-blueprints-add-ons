@@ -1,4 +1,5 @@
 global:
+  domain: argo-aws.staging.viewlift.com
   nodeSelector:
     workload: application
     kubernetes.io/arch: arm64
@@ -14,6 +15,10 @@ global:
 #       instanceLabelKey: argocd.argoproj.io/staging-instance 
 
 configs:
+  # argocd-cm is owned by the argocd-rbac app (helm-charts infra-charts/argocd-rbac-operator):
+  # url, oidc, installationID, tracking method. Don't let this chart render it.
+  cm:
+    create: false
   params:
     create: true
     application.instanceLabelKey: argocd.argoproj.io/staging-instance
